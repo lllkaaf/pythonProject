@@ -1,13 +1,12 @@
 
-n = int(input())
-x = 1
-a = 1
+n = int(input('введите целое число '))
+
+
 sum = 0
-while x < n:
-    a = x * x
-    sum = sum + a
-    a = 0
-    x += 1
-    print(sum)
+while n != 0:
+    sum += n * n
+    n -= 1
+
+print(sum)
 
 

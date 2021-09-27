@@ -1,11 +1,11 @@
 nums = [3, 7, -12, 22, 9, 10, 1, 3, 33, 44, 33, 6, -18, 22]
-x = sorted(nums)
+sort = []
 
-for i in x:
-    if i <= 10:
-        nums.remove(i)
+for i in nums:
+    if i > 10:
 
+        sort.append(i)
 
-print(nums)
+print(sort)
 
 

@@ -54,44 +54,98 @@ def task4():
  age_list = []
  for email, name, surname, date, gender in ls_users:
   date_list = date.split(':')
-  age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
-  #print(name, surname, age)
-  age_list.append([name + ' ' + surname, age])
-  #print(((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30)))
-  #print(int(format_today[2]))
+  #age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
+  if int(format_today[0]) <= int(date_list[0]):
+   if int(format_today[1]) > int(date_list[1]):
+    age_list.append([name + ' ' + surname, (int(format_today[2]) - int(date_list[2]) )])
+   else:
+    age_list.append([name + ' ' + surname, (int(format_today[2]) - int(date_list[2]) - 1)])
+
+
  for x in age_list:
   print(x)
 
 def task4_1():
- today = '01:10:2021'
- format_today = today.split(':')
- age_list = []
+    today = '01:10:2021'
+    format_today = today.split(':')
+    age_list = []
+    for email, name, surname, date, gender in ls_users:
+        date_list = date.split(':')
+        # age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
+        if int(format_today[0]) <= int(date_list[0]):
+            if int(format_today[1]) > int(date_list[1]):
+                age_list.append([name + ' ' + surname, (int(format_today[2]) - int(date_list[2]))])
+            else:
+                age_list.append([name + ' ' + surname, (int(format_today[2]) - int(date_list[2]) - 1)])
 
- for email, name, surname, date, gender in ls_users:
-  date_list = date.split(':')
-  age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
-  # print(name, surname, age)
-  age_list.append([name + ' ' + surname, age])
+    maxAge = 0
+    oldStudentList = []
 
- maxAge = 0
- oldStudentList = []
+    for name_surname, age in age_list:
+        if maxAge < int(age):
+            maxAge = int(age)
+     #print(maxAge)
+    for name_surname, age in age_list:
+        if int(age) == maxAge:
+            oldStudentList.append([name_surname, age])
 
- for name_surname, age in age_list:
-  if maxAge < int(age):
-   maxAge = int(age)
- #print(maxAge)
- for name_surname, age in age_list:
-  if int(age) == maxAge:
-   oldStudentList.append([name_surname, age])
-
- print(oldStudentList)
-
-
-
-
+    print(oldStudentList)
 
 
-task4_1()
+def task4_2():
+    today = '01:10:2021'
+    format_today = today.split(':')
+    age_list = []
+    for email, name, surname, date, gender in ls_users:
+        date_list = date.split(':')
+        # age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
+        if int(format_today[0]) <= int(date_list[0]):
+            if int(format_today[1]) > int(date_list[1]):
+                age_list.append([name + ' ' + surname, (int(format_today[2]) - int(date_list[2]))])
+            else:
+                age_list.append([name + ' ' + surname, (int(format_today[2]) - int(date_list[2]) - 1)])
+
+    #for zxc in age_list:
+        #print(zxc)
+
+
+    age_list_age = []
+
+
+    for x in age_list:
+        age_list_age.append(x[1])
+
+
+    age_set = set(age_list_age)
+    #print(age_set)
+    age_list2 = list(age_set)
+
+    count1 = 0
+    count2 = 0
+    count3 = 0
+    count4 = 0
+    count5 = 0
+
+    for x in age_list_age:
+        if x == age_list2[0]:
+            count1 = count1 + 1
+        elif x == age_list2[1]:
+            count2 = count2 + 1
+        elif x == age_list2[2]:
+            count3 = count3 + 1
+        elif x == age_list2[3]:
+            count4 = count4 + 1
+        elif x == age_list2[4]:
+            count5 = count5 + 1
+
+    count_list = [count1, count2, count3, count4, count5]
+
+    ageDict = dict(zip(age_list2, count_list))
+    print(ageDict)
+
+
+
+task4_2()
 
 
 

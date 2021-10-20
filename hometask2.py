@@ -1,3 +1,5 @@
+import math
+
 ls_users = [
     ['lori49@gmail.com', 'Victor', 'Webb', '20:07:1996', 'male'],
     ['rodriguezbryan@gmail.com', 'Patrick', 'Logan', '17:08:1998', 'male'],
@@ -52,10 +54,11 @@ def task4():
  age_list = []
  for email, name, surname, date, gender in ls_users:
   date_list = date.split(':')
-  age = ((int(date_list[0]) + int(date_list[1]) * 30 + ((int(format_today[2]) - int(date_list[2])) * 365)) - (365 - (int(date_list[0]) + int(date_list[1]) * 30))) // 365
+  age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
   #print(name, surname, age)
   age_list.append([name + ' ' + surname, age])
-
+  #print(((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30)))
+  #print(int(format_today[2]))
  for x in age_list:
   print(x)
 
@@ -66,7 +69,7 @@ def task4_1():
 
  for email, name, surname, date, gender in ls_users:
   date_list = date.split(':')
-  age = ((int(date_list[0]) + int(date_list[1]) * 30 + ((int(format_today[2]) - int(date_list[2])) * 365)) - (365 - (int(date_list[0]) + int(date_list[1]) * 30))) // 365
+  age = math.trunc((((int(format_today[2]) - int(date_list[2])) * 365 + (int(date_list[0]) + (int(date_list[1])-1) * 30))) / 365)
   # print(name, surname, age)
   age_list.append([name + ' ' + surname, age])
 
@@ -76,7 +79,7 @@ def task4_1():
  for name_surname, age in age_list:
   if maxAge < int(age):
    maxAge = int(age)
- print(maxAge)
+ #print(maxAge)
  for name_surname, age in age_list:
   if int(age) == maxAge:
    oldStudentList.append([name_surname, age])
@@ -88,8 +91,7 @@ def task4_1():
 
 
 
-
-
+task4_1()
 
 
 
